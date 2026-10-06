@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alex Rivera | Full-Stack Developer</title>
+<meta name="description" content="Portfolio of Alex Rivera, a full-stack developer building fast, accessible web apps.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0d0f1c;
+  --surface:#151833;
+  --surface-2:#1c2043;
+  --line:#2a2f5c;
+  --text:#e9eaf7;
+  --muted:#a0a4c8;
+  --accent:#9b8cff;
+  --accent-ink:#14123a;
+  --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --body:"DM Sans","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.65;font-size:1.0625rem;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1080px,100% - 2.5rem);margin-inline:auto}
+
+/* Nav */
+header{position:sticky;top:0;z-index:10;background:rgba(13,15,28,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:var(--display);font-weight:800;font-size:1.25rem;text-decoration:none;letter-spacing:-.02em}
+.logo span{color:var(--accent)}
+nav ul{display:flex;gap:1.75rem;list-style:none}
+nav ul a{text-decoration:none;color:var(--muted);font-weight:500;font-size:.95rem;transition:color .2s}
+nav ul a:hover{color:var(--text)}
+
+/* Hero */
+.hero{padding:clamp(4rem,12vw,9rem) 0 clamp(3rem,8vw,6rem);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;width:520px;height:520px;right:-140px;top:-120px;border-radius:50%;
+  background:radial-gradient(circle,rgba(155,140,255,.28),transparent 68%);pointer-events:none}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(3.2rem,11vw,8rem);line-height:.95;letter-spacing:-.04em;
+  animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.hero .role{font-family:var(--display);font-weight:500;font-size:clamp(1.25rem,3vw,1.75rem);color:var(--accent);margin-top:1.25rem}
+.hero .bio{max-width:56ch;color:var(--muted);margin-top:1.5rem;font-size:1.15rem}
+.actions{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:2.25rem}
+.btn{display:inline-block;padding:.85rem 1.6rem;border-radius:999px;font-weight:700;text-decoration:none;font-family:var(--body);font-size:1rem;border:2px solid var(--accent);cursor:pointer;transition:transform .15s,background .2s}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{background:transparent;color:var(--text)}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost:hover{background:rgba(155,140,255,.12)}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+
+/* Sections */
+section{padding:clamp(3rem,7vw,5.5rem) 0}
+h2{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,4vw,2.75rem);letter-spacing:-.03em;line-height:1.1;margin-bottom:.6rem}
+.lead{color:var(--muted);max-width:52ch;margin-bottom:2.25rem}
+
+/* Skills */
+.badges{display:flex;flex-wrap:wrap;gap:.7rem;list-style:none}
+.badges li{background:var(--surface);border:1px solid var(--line);padding:.5rem 1.1rem;border-radius:999px;font-weight:500;font-size:.98rem}
+.badges li.core{border-color:var(--accent);color:var(--accent)}
+
+/* Projects */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.5rem}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.75rem;display:flex;flex-direction:column;transition:border-color .2s,transform .2s}
+.card:hover{border-color:var(--accent);transform:translateY(-4px)}
+.thumb{height:140px;border-radius:12px;margin-bottom:1.4rem;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:2.4rem;color:var(--accent-ink)}
+.t1{background:linear-gradient(135deg,#9b8cff,#6f7bff)}
+.t2{background:linear-gradient(135deg,#7fd6ff,#9b8cff)}
+.t3{background:linear-gradient(135deg,#d6a8ff,#8f86ff)}
+.card h3{font-family:var(--display);font-size:1.4rem;letter-spacing:-.02em;margin-bottom:.5rem}
+.card p{color:var(--muted);font-size:1rem;flex:1}
+.tags{display:flex;flex-wrap:wrap;gap:.45rem;list-style:none;margin:1.1rem 0}
+.tags li{font-size:.85rem;color:var(--accent);background:var(--surface-2);padding:.2rem .65rem;border-radius:6px}
+.links{display:flex;gap:1.25rem;font-weight:700;font-size:.95rem}
+.links a{color:var(--text);text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:4px}
+.links a:hover{color:var(--accent)}
+
+/* Contact */
+.contact-box{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:clamp(1.5rem,5vw,3rem);display:grid;gap:2.5rem;grid-template-columns:1fr 1.2fr}
+form{display:grid;gap:1.1rem}
+label{display:grid;gap:.4rem;font-weight:500;font-size:.95rem}
+input,textarea{font:inherit;color:var(--text);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:.8rem 1rem;width:100%}
+input:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(155,140,255,.3)}
+textarea{min-height:140px;resize:vertical}
+.status{min-height:1.5rem;font-weight:500}
+.status.ok{color:#8be0b0}
+.status.err{color:#ff9aa8}
+.direct{color:var(--muted);margin-top:1rem}
+.direct a{color:var(--accent)}
+
+footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--muted);font-size:.95rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.75rem}
+
+@media (max-width:760px){
+  .contact-box{grid-template-columns:1fr}
+  nav ul{gap:1.1rem}
+}
+@media (max-width:480px){
+  nav ul li:first-child{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap" aria-label="Main">
+    <a class="logo" href="#top">alex<span>.</span>rivera</a>
+    <ul>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <h1>Alex Rivera</h1>
+      <p class="role">Full-stack developer</p>
+      <p class="bio">I build fast, accessible web apps from database to interface. For the past six years I've worked with startups and small teams to turn rough ideas into products people enjoy using. I care about clean code, clear design, and shipping on time.</p>
+      <div class="actions">
+        <a class="btn primary" href="#projects">See my work</a>
+        <a class="btn ghost" href="#contact">Get in touch</a>
+      </div>
+    </div>
+  </div>
+
+  <section id="skills">
+    <div class="wrap">
+      <h2>Skills</h2>
+      <p class="lead">The tools I reach for most often, with my daily drivers outlined.</p>
+      <ul class="badges">
+        <li class="core">JavaScript</li>
+        <li class="core">TypeScript</li>
+        <li class="core">React</li>
+        <li class="core">Node.js</li>
+        <li>Next.js</li>
+        <li>Python</li>
+        <li>PostgreSQL</li>
+        <li>GraphQL</li>
+        <li>Tailwind CSS</li>
+        <li>Docker</li>
+        <li>AWS</li>
+        <li>Figma</li>
+        <li>Git</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <h2>Featured projects</h2>
+      <p class="lead">Three recent builds I'm proud of. Swap in your own links and details.</p>
+      <div class="grid">
+        <article class="card">
+          <div class="thumb t1" aria-hidden="true">TF</div>
+          <h3>TaskFlow</h3>
+          <p>A team task board with real-time sync, drag-and-drop columns, and offline support. Cut planning meetings by a third for the pilot team.</p>
+          <ul class="tags"><li>React</li><li>Node.js</li><li>WebSockets</li></ul>
+          <div class="links"><a href="#" aria-label="TaskFlow live demo">Live demo</a><a href="#" aria-label="TaskFlow source code">Source</a></div>
+        </article>
+        <article class="card">
+          <div class="thumb t2" aria-hidden="true">PW</div>
+          <h3>PocketWeather</h3>
+          <p>A weather app that answers one question: do I need a jacket? Hourly forecasts, clear icons, and a widget-ready layout.</p>
+          <ul class="tags"><li>TypeScript</li><li>Next.js</li><li>REST API</li></ul>
+          <div class="links"><a href="#" aria-label="PocketWeather live demo">Live demo</a><a href="#" aria-label="PocketWeather source code">Source</a></div>
+        </article>
+        <article class="card">
+          <div class="thumb t3" aria-hidden="true">LB</div>
+          <h3>LedgerBook</h3>
+          <p>A simple bookkeeping dashboard for freelancers. Import bank CSVs, tag expenses, and export tax-ready reports in one click.</p>
+          <ul class="tags"><li>Python</li><li>PostgreSQL</li><li>Chart.js</li></ul>
+          <div class="links"><a href="#" aria-label="LedgerBook live demo">Live demo</a><a href="#" aria-label="LedgerBook source code">Source</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-box">
+        <div>
+          <h2>Let's work together</h2>
+          <p class="lead" style="margin-bottom:0">Have a project, a role, or a question? Send a message and I'll reply within two working days.</p>
+          <p class="direct">Prefer email? <a href="mailto:hello@alexrivera.dev">hello@alexrivera.dev</a></p>
+        </div>
+        <form id="contact-form" novalidate>
+          <label>Name
+            <input type="text" name="name" autocomplete="name" required>
+          </label>
+          <label>Email
+            <input type="email" name="email" autocomplete="email" required>
+          </label>
+          <label>Message
+            <textarea name="message" required></textarea>
+          </label>
+          <button class="btn primary" type="submit">Send message</button>
+          <p class="status" id="status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; <span id="year"></span> Alex Rivera</span>
+    <span>Built with HTML, CSS, and a little JavaScript.</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('status');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const message = form.message.value.trim();
+
+    if (!name || !email || !message) {
+      status.className = 'status err';
+      status.textContent = 'Please fill in your name, email, and message.';
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      status.className = 'status err';
+      status.textContent = 'Enter a valid email address, like name@example.com.';
+      return;
+    }
+
+    // Opens the visitor's email app with the message filled in.
+    // To send without an email app, replace this with a form service (Formspree, Netlify Forms, etc.).
+    const subject = encodeURIComponent('Portfolio message from ' + name);
+    const body = encodeURIComponent(message + '\n\nFrom: ' + name + ' (' + email + ')');
+    window.location.href = 'mailto:hello@alexrivera.dev?subject=' + subject + '&body=' + body;
+
+    status.className = 'status ok';
+    status.textContent = 'Thanks, ' + name + '. Your email app should open with the message ready to send.';
+    form.reset();
+  });
+</script>
+</body>
+</html>
